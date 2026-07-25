@@ -38,23 +38,23 @@
 - [x] Verify all tests pass locally
 
 ## Phase 6: CI/CD & GitHub
-- [ ] Create GitHub Actions workflow for tests
-- [ ] Initialize git repo and push to GitHub
-- [ ] Verify CI runs on push
+- [x] Create GitHub Actions workflow for tests
+- [x] Initialize git repo and push to GitHub
+- [x] Verify CI runs on push
 
 ## Phase 7: Deployment
-- [ ] Deploy to production
-- [ ] Verify live URL works
-- [ ] Test all features end-to-end
+- [x] Deploy to production
+- [x] Verify live URL works
+- [x] Test all features end-to-end
 
 ## Phase 8: Documentation
-- [ ] Write comprehensive README with API contract
-- [ ] Document all endpoints and schemas
-- [ ] Document error codes and rate limits
-- [ ] Write Task B architecture document
-- [ ] Include in-app architecture page
+- [x] Write comprehensive README with API contract
+- [x] Document all endpoints and schemas
+- [x] Document error codes and rate limits
+- [x] Write Task B architecture document
+- [x] Include in-app architecture page
 
 ## Phase 9: Final Delivery
-- [ ] Verify footer credit on all pages
-- [ ] Collect live URL and GitHub repo link
-- [ ] Package all deliverables
+- [x] Verify footer credit on all pages
+- [x] Collect live URL and GitHub repo link
+- [x] Package all deliverables

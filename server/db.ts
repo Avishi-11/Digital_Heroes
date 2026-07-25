@@ -89,4 +89,64 @@ export async function getUserByOpenId(openId: string) {
   return result.length > 0 ? result[0] : undefined;
 }
 
-// TODO: add feature queries here as your schema grows.
+/**
+ * Create a new audit record
+ */
+export async function createAudit(audit: InsertAudit) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  const result = await db.insert(audits).values(audit);
+  return result;
+}
+
+/**
+ * Get audit by ID
+ */
+export async function getAuditById(id: number) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  const result = await db.select().from(audits).where(eq(audits.id, id)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+/**
+ * Get all audits for a user, ordered by most recent first
+ */
+export async function getUserAudits(userId: number, limit = 50, offset = 0) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  const result = await db
+    .select()
+    .from(audits)
+    .where(eq(audits.userId, userId))
+    .orderBy(desc(audits.createdAt))
+    .limit(limit)
+    .offset(offset);
+  return result;
+}
+
+/**
+ * Get the most recent audit for a specific URL by user
+ */
+export async function getLatestAuditForUrl(userId: number, url: string) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  const result = await db
+    .select()
+    .from(audits)
+    .where(and(eq(audits.userId, userId), eq(audits.url, url)))
+    .orderBy(desc(audits.createdAt))
+    .limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+import { desc, and } from "drizzle-orm";
+import { InsertAudit, audits } from "../drizzle/schema";
